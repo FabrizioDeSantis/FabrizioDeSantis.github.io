@@ -8,11 +8,9 @@
         :root {
             --primary-color: #3a86ff;
             --text-color: #333;
-            --bg-color: #fafafa;
+            --bg-color: #fff;
             --card-color: #fff;
             --border-color: #eaeaea;
-            --icon-color: rgba(58, 134, 255, 0.1);
-            --icon-border: rgba(58, 134, 255, 0.2);
         }
 
         * {
@@ -30,68 +28,6 @@
             margin: 0;
             overflow-x: hidden;
             position: relative;
-        }
-
-        .background-animations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .bg-icon {
-            position: absolute;
-            opacity: 0.4;
-            pointer-events: none;
-        }
-
-        .node {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--icon-color);
-            border: 1px solid var(--icon-border);
-        }
-
-        .process {
-            width: 20px;
-            height: 20px;
-            border: 1px solid var(--icon-border);
-            background-color: var(--icon-color);
-            border-radius: 4px;
-        }
-
-        .connection {
-            width: 40px;
-            height: 1px;
-            background-color: var(--icon-border);
-            transform-origin: left center;
-        }
-
-        .neuron {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background-color: var(--icon-color);
-            border: 1px solid var(--icon-border);
-        }
-
-        .diamond {
-            width: 16px;
-            height: 16px;
-            background-color: var(--icon-color);
-            border: 1px solid var(--icon-border);
-            transform: rotate(45deg);
-        }
-
-        .square {
-            width: 14px;
-            height: 14px;
-            background-color: var(--icon-color);
-            border: 1px solid var(--icon-border);
         }
 
         header {
@@ -393,33 +329,6 @@
             }
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.4;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.6;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0.4;
-            }
-        }
-
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -454,8 +363,6 @@
     </style>
 </head>
 <body>
-    <div class="background-animations" id="bgAnimations"></div>
-
     <header>
         <div class="logo">Fabrizio De Santis</div>
         <nav>
@@ -547,147 +454,5 @@
             <a href="#" class="social-link">Google Scholar</a>
         </div>
     </footer>
-
-    <script>
-        // Generate background animated icons
-        document.addEventListener('DOMContentLoaded', function() {
-            const bgContainer = document.getElementById('bgAnimations');
-            const iconTypes = ['node', 'process', 'connection', 'neuron', 'diamond', 'square'];
-            const numIcons = 35; // Number of icons to generate
-            
-            for (let i = 0; i < numIcons; i++) {
-                const iconType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
-                const icon = document.createElement('div');
-                icon.className = `bg-icon ${iconType}`;
-                
-                // Random position
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                
-                icon.style.left = `${left}%`;
-                icon.style.top = `${top}%`;
-                
-                // Random animation duration and delay
-                const duration = 5 + Math.random() * 10;
-                const delay = Math.random() * 5;
-                
-                // Apply animation
-                if (i % 2 === 0) {
-                    icon.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-                } else {
-                    icon.style.animation = `pulse ${duration}s ease-in-out ${delay}s infinite`;
-                }
-                
-                // For connection icons, add a random rotation
-                if (iconType === 'connection') {
-                    const rotation = Math.random() * 360;
-                    icon.style.transform = `rotate(${rotation}deg)`;
-                }
-                
-                bgContainer.appendChild(icon);
-            }
-            
-            // Create a neural network-like connection effect
-            for (let i = 0; i < 12; i++) {
-                // Create node
-                const node = document.createElement('div');
-                node.className = 'bg-icon neuron';
-                
-                const left = 10 + Math.random() * 80;
-                const top = 10 + Math.random() * 80;
-                
-                node.style.left = `${left}%`;
-                node.style.top = `${top}%`;
-                
-                const duration = 5 + Math.random() * 10;
-                const delay = Math.random() * 5;
-                
-                node.style.animation = `pulse ${duration}s ease-in-out ${delay}s infinite`;
-                
-                bgContainer.appendChild(node);
-                
-                // Create connections to other random nodes
-                if (i > 0) {
-                    const connection = document.createElement('div');
-                    connection.className = 'bg-icon connection';
-                    
-                    // Connect to a previous node
-                    const prevNodeIndex = Math.floor(Math.random() * i);
-                    const prevNode = bgContainer.querySelectorAll('.neuron')[prevNodeIndex];
-                    
-                    const prevRect = prevNode.getBoundingClientRect();
-                    const nodeRect = node.getBoundingClientRect();
-                    
-                    // Calculate distance and angle
-                    const dx = nodeRect.left - prevRect.left;
-                    const dy = nodeRect.top - prevRect.top;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                    
-                    connection.style.left = `${prevNode.style.left}`;
-                    connection.style.top = `${prevNode.style.top}`;
-                    connection.style.width = `${distance / window.innerWidth * 100}%`;
-                    connection.style.transform = `rotate(${angle}deg)`;
-                    
-                    bgContainer.appendChild(connection);
-                }
-            }
-            
-            // Process mining flow elements
-            for (let i = 0; i < 3; i++) {
-                // Create a small process flow with squares and diamonds connected
-                const startX = 20 + Math.random() * 60;
-                const startY = 20 + Math.random() * 60;
-                
-                // Start with process node
-                const process = document.createElement('div');
-                process.className = 'bg-icon process';
-                process.style.left = `${startX}%`;
-                process.style.top = `${startY}%`;
-                
-                const duration = 8 + Math.random() * 5;
-                process.style.animation = `float ${duration}s ease-in-out 0s infinite`;
-                
-                bgContainer.appendChild(process);
-                
-                // Add a diamond (decision)
-                const diamond = document.createElement('div');
-                diamond.className = 'bg-icon diamond';
-                diamond.style.left = `${startX + 10}%`;
-                diamond.style.top = `${startY + (Math.random() > 0.5 ? 10 : -10)}%`;
-                diamond.style.animation = `float ${duration}s ease-in-out 0.5s infinite`;
-                
-                bgContainer.appendChild(diamond);
-                
-                // Connect process to diamond
-                const connection1 = document.createElement('div');
-                connection1.className = 'bg-icon connection';
-                connection1.style.left = `${startX}%`;
-                connection1.style.top = `${startY}%`;
-                connection1.style.width = `10%`;
-                connection1.style.transform = `rotate(${diamond.style.top > process.style.top ? 45 : -45}deg)`;
-                
-                bgContainer.appendChild(connection1);
-                
-                // Add ending process
-                const endProcess = document.createElement('div');
-                endProcess.className = 'bg-icon process';
-                endProcess.style.left = `${startX + 20}%`;
-                endProcess.style.top = `${diamond.style.top}`;
-                endProcess.style.animation = `float ${duration}s ease-in-out 1s infinite`;
-                
-                bgContainer.appendChild(endProcess);
-                
-                // Connect diamond to end process
-                const connection2 = document.createElement('div');
-                connection2.className = 'bg-icon connection';
-                connection2.style.left = `${diamond.style.left}`;
-                connection2.style.top = `${diamond.style.top}`;
-                connection2.style.width = `10%`;
-                
-                bgContainer.appendChild(connection2);
-            }
-        });
-    </script>
 </body>
 </html>
