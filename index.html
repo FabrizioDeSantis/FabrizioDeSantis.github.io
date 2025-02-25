@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - PhD Researcher</title>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --text-color: #333;
+            --bg-color: #fafafa;
+            --card-color: #fff;
+            --border-color: #eaeaea;
+            --icon-color: rgba(58, 134, 255, 0.1);
+            --icon-border: rgba(58, 134, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .background-animations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-icon {
+            position: absolute;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .node {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--icon-color);
+            border: 1px solid var(--icon-border);
+        }
+
+        .process {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--icon-border);
+            background-color: var(--icon-color);
+            border-radius: 4px;
+        }
+
+        .connection {
+            width: 40px;
+            height: 1px;
+            background-color: var(--icon-border);
+            transform-origin: left center;
+        }
+
+        .neuron {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--icon-color);
+            border: 1px solid var(--icon-border);
+        }
+
+        .diamond {
+            width: 16px;
+            height: 16px;
+            background-color: var(--icon-color);
+            border: 1px solid var(--icon-border);
+            transform: rotate(45deg);
+        }
+
+        .square {
+            width: 14px;
+            height: 14px;
+            background-color: var(--icon-color);
+            border: 1px solid var(--icon-border);
+        }
+
+        header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--card-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li {
+            opacity: 0;
+            animation: slideInRight 0.5s ease-in-out forwards;
+        }
+
+        nav ul li:nth-child(1) { animation-delay: 0.1s; }
+        nav ul li:nth-child(2) { animation-delay: 0.2s; }
+        nav ul li:nth-child(3) { animation-delay: 0.3s; }
+        nav ul li:nth-child(4) { animation-delay: 0.4s; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-in-out forwards;
+        }
+
+        #about { animation-delay: 0.3s; }
+        #research { animation-delay: 0.5s; }
+        #publications { animation-delay: 0.7s; }
+        #contact { animation-delay: 0.9s; }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: calc(100vh - 89px);
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pill {
+            display: inline-block;
+            background-color: rgba(58, 134, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background-color: var(--card-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .publication {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .publication-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .publication-venue {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form .full-width {
+            grid-column: 1 / span 2;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2a75e6;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-color);
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-link:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero {
+                height: auto;
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form .full-width {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animations" id="bgAnimations"></div>
+
+    <header>
+        <div class="logo">Alex Chen</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <img src="/api/placeholder/180/180" alt="Alex Chen" class="profile-image">
+            <h1>Alex Chen</h1>
+            <p>PhD Candidate in Computational Neuroscience</p>
+            <p>Department of Neuroscience, Stanford University</p>
+            <div style="margin-top: 1rem;">
+                <span class="pill">Neural Networks</span>
+                <span class="pill">Brain-Computer Interfaces</span>
+                <span class="pill">Machine Learning</span>
+                <span class="pill">Cognitive Science</span>
+            </div>
+        </div>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a fifth-year PhD candidate at Stanford University, working at the intersection of neuroscience, artificial intelligence, and cognitive science. My research focuses on developing computational models that help us understand how the brain processes and integrates sensory information.</p>
+            <p>Prior to my PhD, I received my B.S. in Computer Science and Cognitive Science from MIT and worked as a research assistant at the Allen Institute for Brain Science.</p>
+            <p>When I'm not in the lab, you can find me hiking in the mountains, playing the piano, or exploring new coffee shops around the Bay Area.</p>
+        </section>
+
+        <section id="research">
+            <h2>Research</h2>
+            <p>My research aims to bridge the gap between computational neuroscience and artificial intelligence by developing biologically-inspired algorithms that can help us understand the neural mechanisms underlying cognition.</p>
+            
+            <div class="card">
+                <h3>Current Project: Neural Mechanisms of Attention</h3>
+                <p>I'm investigating how attentional mechanisms in the brain modulate sensory processing and how these principles can be applied to improve artificial neural networks. This project combines high-density EEG recordings, computational modeling, and machine learning techniques.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Previous Project: Adaptive Learning in Dynamic Environments</h3>
+                <p>I developed a computational framework that explains how the brain adapts its learning strategies in changing environments. This work demonstrated that human learning follows normative principles of Bayesian inference and reinforcement learning.</p>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <div class="publication">
+                <div class="publication-title">Attentional Modulation of Neural Dynamics in Visual Processing</div>
+                <div class="publication-authors">Chen, A., Johnson, K., & Smith, P.</div>
+                <div class="publication-venue">Nature Neuroscience, 2024</div>
+                <p>This paper demonstrates how attention selectively enhances neural representations of relevant stimuli while suppressing irrelevant information, proposing a computational model that accurately predicts human performance in complex visual tasks.</p>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">Adaptive Learning Rates in Non-stationary Environments</div>
+                <div class="publication-authors">Chen, A., Williams, R., & Patel, S.</div>
+                <div class="publication-venue">Journal of Cognitive Neuroscience, 2023</div>
+                <p>We proposed a normative model of how humans adjust their learning rates based on environmental volatility, combining principles from Bayesian inference and reinforcement learning.</p>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-title">Neural Correlates of Decision Confidence in Human Cortex</div>
+                <div class="publication-authors">Smith, P., Chen, A., & Thompson, J.</div>
+                <div class="publication-venue">Proceedings of the National Academy of Sciences, 2022</div>
+                <p>Using combined EEG and fMRI, we identified distinct neural signatures of decision confidence across different cortical regions and their temporal dynamics.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>I'm always open to collaborations and discussions. Feel free to reach out!</p>
+            <p><strong>Email:</strong> alex.chen@stanford.edu</p>
+            <p><strong>Office:</strong> Stanford Neuroscience Building, Room 204</p>
+            
+            <form class="contact-form">
+                <div>
+                    <input type="text" placeholder="Name" required>
+                </div>
+                <div>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="full-width">
+                    <input type="text" placeholder="Subject" required>
+                </div>
+                <div class="full-width">
+                    <textarea placeholder="Your message"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alex Chen - Stanford University</p>
+        <div class="social-links">
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">Google Scholar</a>
+        </div>
+    </footer>
+
+    <script>
+        // Generate background animated icons
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgContainer = document.getElementById('bgAnimations');
+            const iconTypes = ['node', 'process', 'connection', 'neuron', 'diamond', 'square'];
+            const numIcons = 35; // Number of icons to generate
+            
+            for (let i = 0; i < numIcons; i++) {
+                const iconType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
+                const icon = document.createElement('div');
+                icon.className = `bg-icon ${iconType}`;
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                icon.style.left = `${left}%`;
+                icon.style.top = `${top}%`;
+                
+                // Random animation duration and delay
+                const duration = 5 + Math.random() * 10;
+                const delay = Math.random() * 5;
+                
+                // Apply animation
+                if (i % 2 === 0) {
+                    icon.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                } else {
+                    icon.style.animation = `pulse ${duration}s ease-in-out ${delay}s infinite`;
+                }
+                
+                // For connection icons, add a random rotation
+                if (iconType === 'connection') {
+                    const rotation = Math.random() * 360;
+                    icon.style.transform = `rotate(${rotation}deg)`;
+                }
+                
+                bgContainer.appendChild(icon);
+            }
+            
+            // Create a neural network-like connection effect
+            for (let i = 0; i < 12; i++) {
+                // Create node
+                const node = document.createElement('div');
+                node.className = 'bg-icon neuron';
+                
+                const left = 10 + Math.random() * 80;
+                const top = 10 + Math.random() * 80;
+                
+                node.style.left = `${left}%`;
+                node.style.top = `${top}%`;
+                
+                const duration = 5 + Math.random() * 10;
+                const delay = Math.random() * 5;
+                
+                node.style.animation = `pulse ${duration}s ease-in-out ${delay}s infinite`;
+                
+                bgContainer.appendChild(node);
+                
+                // Create connections to other random nodes
+                if (i > 0) {
+                    const connection = document.createElement('div');
+                    connection.className = 'bg-icon connection';
+                    
+                    // Connect to a previous node
+                    const prevNodeIndex = Math.floor(Math.random() * i);
+                    const prevNode = bgContainer.querySelectorAll('.neuron')[prevNodeIndex];
+                    
+                    const prevRect = prevNode.getBoundingClientRect();
+                    const nodeRect = node.getBoundingClientRect();
+                    
+                    // Calculate distance and angle
+                    const dx = nodeRect.left - prevRect.left;
+                    const dy = nodeRect.top - prevRect.top;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                    
+                    connection.style.left = `${prevNode.style.left}`;
+                    connection.style.top = `${prevNode.style.top}`;
+                    connection.style.width = `${distance / window.innerWidth * 100}%`;
+                    connection.style.transform = `rotate(${angle}deg)`;
+                    
+                    bgContainer.appendChild(connection);
+                }
+            }
+            
+            // Process mining flow elements
+            for (let i = 0; i < 3; i++) {
+                // Create a small process flow with squares and diamonds connected
+                const startX = 20 + Math.random() * 60;
+                const startY = 20 + Math.random() * 60;
+                
+                // Start with process node
+                const process = document.createElement('div');
+                process.className = 'bg-icon process';
+                process.style.left = `${startX}%`;
+                process.style.top = `${startY}%`;
+                
+                const duration = 8 + Math.random() * 5;
+                process.style.animation = `float ${duration}s ease-in-out 0s infinite`;
+                
+                bgContainer.appendChild(process);
+                
+                // Add a diamond (decision)
+                const diamond = document.createElement('div');
+                diamond.className = 'bg-icon diamond';
+                diamond.style.left = `${startX + 10}%`;
+                diamond.style.top = `${startY + (Math.random() > 0.5 ? 10 : -10)}%`;
+                diamond.style.animation = `float ${duration}s ease-in-out 0.5s infinite`;
+                
+                bgContainer.appendChild(diamond);
+                
+                // Connect process to diamond
+                const connection1 = document.createElement('div');
+                connection1.className = 'bg-icon connection';
+                connection1.style.left = `${startX}%`;
+                connection1.style.top = `${startY}%`;
+                connection1.style.width = `10%`;
+                connection1.style.transform = `rotate(${diamond.style.top > process.style.top ? 45 : -45}deg)`;
+                
+                bgContainer.appendChild(connection1);
+                
+                // Add ending process
+                const endProcess = document.createElement('div');
+                endProcess.className = 'bg-icon process';
+                endProcess.style.left = `${startX + 20}%`;
+                endProcess.style.top = `${diamond.style.top}`;
+                endProcess.style.animation = `float ${duration}s ease-in-out 1s infinite`;
+                
+                bgContainer.appendChild(endProcess);
+                
+                // Connect diamond to end process
+                const connection2 = document.createElement('div');
+                connection2.className = 'bg-icon connection';
+                connection2.style.left = `${diamond.style.left}`;
+                connection2.style.top = `${diamond.style.top}`;
+                connection2.style.width = `10%`;
+                
+                bgContainer.appendChild(connection2);
+            }
+        });
+    </script>
+</body>
+</html>
