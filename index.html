@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabrizio De Santis - PhD Student</title>
-    <!-- Added Google Fonts import for Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Fabrizio De Santis - PhD Student</title>
     <style>
         :root {
-            --primary-color: #3a86ff;
+            --primary-color: #333;
             --text-color: #333;
-            --bg-color: #00ccffbd; /* Light cyan background */
+            --bg-color: #FAFAFA; /* Light cyan background */
             --card-color: #fff;
             --border-color: #eaeaea;
         }
@@ -32,113 +30,10 @@
             margin: 0;
             overflow-x: hidden;
             position: relative;
-            font-weight: 300;
-        }
-
-        /* Animated Background */
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.2;
-            border-radius: 50%;
-            background: var(--primary-color);
-            animation: float 25s infinite ease-in-out;
-        }
-
-        .shape:nth-child(1) {
-            width: 150px;
-            height: 150px;
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-            animation-duration: 30s;
-        }
-
-        .shape:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-            animation-duration: 25s;
-        }
-
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            left: 85%;
-            animation-delay: 4s;
-            animation-duration: 35s;
-        }
-
-        .shape:nth-child(4) {
-            width: 80px;
-            height: 80px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 6s;
-            animation-duration: 28s;
-        }
-
-        .shape:nth-child(5) {
-            width: 120px;
-            height: 120px;
-            top: 40%;
-            left: 40%;
-            animation-delay: 8s;
-            animation-duration: 32s;
-        }
-
-        .shape-square {
-            border-radius: 5px;
-            transform: rotate(45deg);
-        }
-
-        .shape-rectangle {
-            border-radius: 5px;
-            width: 100px !important;
-            height: 60px !important;
-        }
-
-        .shape-triangle {
-            width: 0 !important;
-            height: 0 !important;
-            background: transparent !important;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 86px solid rgba(58, 134, 255, 0.2);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(50px, 100px) rotate(90deg);
-            }
-            50% {
-                transform: translate(100px, 0) rotate(180deg);
-            }
-            75% {
-                transform: translate(50px, -100px) rotate(270deg);
-            }
-            100% {
-                transform: translate(0, 0) rotate(360deg);
-            }
         }
 
         header {
-            padding: 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -147,20 +42,19 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .logo {
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.5rem;
             color: var(--primary-color);
             opacity: 0;
             animation: fadeIn 1s ease-in-out forwards;
-            letter-spacing: -0.5px;
         }
+
+        .logo .first-name {
+                color: #14B789;
+            }
 
         nav ul {
             display: flex;
@@ -184,11 +78,10 @@
             font-weight: 500;
             position: relative;
             transition: color 0.3s;
-            letter-spacing: 0.2px;
         }
 
         nav a:hover {
-            color: var(--primary-color);
+            color: #14B789;
         }
 
         nav a::after {
@@ -198,7 +91,7 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: var(--primary-color);
+            background-color: #14B789;
             transition: width 0.3s;
         }
 
@@ -212,12 +105,6 @@
             padding: 2rem;
             position: relative;
             z-index: 1;
-            background-color: rgba(250, 250, 250, 0.8);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-radius: 12px;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         section {
@@ -234,13 +121,11 @@
 
         h1, h2, h3 {
             margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
         h1 {
             font-size: 2.5rem;
-            font-weight: 800;
+            font-weight: 600;
         }
 
         h2 {
@@ -257,34 +142,33 @@
         p {
             margin-bottom: 1rem;
             line-height: 1.8;
-            font-weight: 300;
         }
 
         .hero {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: calc(100vh - 89px);
-            opacity: 0;
-            animation: fadeIn 1s ease-in-out 0.2s forwards;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            letter-spacing: -1px;
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
-            font-weight: 300;
-            letter-spacing: 0.2px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-image {
-            width: 180px;
-            height: 180px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 2rem;
@@ -294,16 +178,15 @@
 
         .pill {
             display: inline-block;
-            background-color: rgba(58, 134, 255, 0.1);
-            color: var(--primary-color);
+            /* background-color: rgba(58, 134, 255, 0.1); */
+            background-color: #14B789;
+            /* color: var(--primary-color); */
+            color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 2rem;
             font-size: 0.9rem;
-            font-weight: 400;
-            margin-right: 0.5rem;
             margin-bottom: 0.5rem;
             transition: transform 0.3s, box-shadow 0.3s;
-            letter-spacing: 0.2px;
         }
 
         .pill:hover {
@@ -318,14 +201,12 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 20px #14B789;
+            /* box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08); */
         }
 
         .card h3 {
@@ -353,14 +234,12 @@
             font-style: italic;
             margin-bottom: 0.5rem;
             color: #666;
-            font-weight: 300;
         }
 
         .publication-venue {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 0.5rem;
-            font-weight: 300;
         }
 
         .contact-form {
@@ -379,9 +258,6 @@
             border: 1px solid var(--border-color);
             border-radius: 4px;
             font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 300;
-            background-color: rgba(255, 255, 255, 0.8);
         }
 
         textarea {
@@ -396,11 +272,8 @@
             border: none;
             border-radius: 4px;
             font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
-            letter-spacing: 0.5px;
         }
 
         button:hover {
@@ -411,17 +284,11 @@
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: var(--card-color);
             border-top: 1px solid var(--border-color);
             margin-top: 4rem;
             position: relative;
             z-index: 1;
-        }
-
-        footer p {
-            font-weight: 300;
         }
 
         .social-links {
@@ -431,12 +298,23 @@
             margin-top: 1rem;
         }
 
+        .social-links-head {
+            display: flex;
+            justify-content: left;
+            gap: 1.5rem;
+        }
+
+        .social-link-head{
+            font-size: 1.2rem;
+            /* color: #14B789; */
+            color: var(--primary-color);
+            transition: color 0.3s, transform 0.3s;
+        }
+
         .social-link {
             font-size: 1.2rem;
             color: var(--text-color);
             transition: color 0.3s, transform 0.3s;
-            font-weight: 400;
-            text-decoration: none;
         }
 
         .social-link:hover {
@@ -444,8 +322,10 @@
             transform: translateY(-3px);
         }
 
-        strong {
-            font-weight: 500;
+        .social-link-head:hover {
+            /* color: var(--primary-color); */
+            color: #14B789;
+            transform: translateY(-3px);
         }
 
         @keyframes fadeIn {
@@ -513,17 +393,9 @@
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="shape"></div>
-        <div class="shape shape-square"></div>
-        <div class="shape shape-triangle"></div>
-        <div class="shape shape-rectangle"></div>
-        <div class="shape"></div>
-    </div>
-
     <header>
-        <div class="logo">Fabrizio De Santis</div>
+        <div class="logo">
+            <span class="first-name">Fabrizio</span> <span>De Santis</span></div>
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -537,12 +409,19 @@
     <main>
         <div class="hero">
             <img src="propic.jpeg" alt="Fabrizio De Santis" class="profile-image">
-            <h1>Fabrizio De Santis</h1>
-            <p>PhD Candidate in Information Technology</p>
-            <p>Department of Engineering and Architecture, University of Parma</p>
-            <div style="margin-top: 1rem;">
-                <span class="pill">Machine Learning</span>
-                <span class="pill">Process Mining</span>
+            <div class="hero-content">
+                <h1>Fabrizio De Santis</h1>
+                <p>PhD Candidate in Information Technology</p>
+                <p>Department of Engineering and Architecture<br>University of Parma, Italy</p>
+                <div class="social-links-head">
+                    <a href="https://www.linkedin.com/in/fabrizio-de-santis-075474158/" class="social-link-head"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link-head"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link-head"><i class="fas fa-graduation-cap"></i></a>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <span class="pill">Machine Learning</span>
+                    <span class="pill">Process Mining</span>
+                </div>
             </div>
         </div>
 
@@ -556,14 +435,14 @@
             <p>Blah blah blah.</p>
             
             <div class="card">
-                <h3>Current Project: X</h3>
+                <h3>Current Project: Neuro-Symbolic Predictive Process Monitoring</h3>
                 <p>Blah blah blah.</p>
             </div>
             
-            <div class="card">
+            <!-- <div class="card">
                 <h3>Previous Project: Y</h3>
                 <p>Blah blah blah.</p>
-            </div>
+            </div> -->
         </section>
 
         <section id="publications">
@@ -582,9 +461,9 @@
             <h2>Contact</h2>
             <p>I'm always open to collaborations and discussions. Feel free to reach out!</p>
             <p><strong>Email:</strong> fabrizio.desantis@unipr.it</p>
-            <p><strong>Office:</strong> </p>
+            <p><strong>Office:</strong> Department of Engineering and Architecture<br>Parco Area delle Scienze 181/A<br>Università degli Studi di Parma<br>I-43124 Parma</p>
             
-            <form class="contact-form">
+            <!-- <form class="contact-form">
                 <div>
                     <input type="text" placeholder="Name" required>
                 </div>
@@ -599,7 +478,7 @@
                 </div>
                 <div>
                     <button type="submit">Send Message</button>
-                </div>
+                </div> -->
             </form>
         </section>
     </main>
@@ -607,7 +486,6 @@
     <footer>
         <p>&copy; 2025 Fabrizio De Santis</p>
         <div class="social-links">
-            <a href="#" class="social-link">Twitter</a>
             <a href="#" class="social-link">LinkedIn</a>
             <a href="#" class="social-link">GitHub</a>
             <a href="#" class="social-link">Google Scholar</a>
