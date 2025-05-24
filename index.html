@@ -13,6 +13,8 @@
             --bg-color: #FAFAFA;
             --card-color: #fff;
             --border-color: #eaeaea;
+            --gradient-primary: linear-gradient(135deg, #87CEEB, #9370DB);
+            --gradient-hover: linear-gradient(135deg, #6BB6FF, #8A2BE2);
         }
 
         * {
@@ -53,7 +55,10 @@
         }
 
         .logo .first-name {
-            color: #14B789;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         nav ul {
@@ -81,7 +86,10 @@
         }
 
         nav a:hover {
-            color: #14B789;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         nav a::after {
@@ -91,7 +99,7 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: #14B789;
+            background: var(--gradient-primary);
             transition: width 0.3s;
         }
 
@@ -179,19 +187,20 @@
 
         .pill {
             display: inline-block;
-            background-color: #14B789;
+            background: var(--gradient-primary);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 2rem;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
             margin-right: 0.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
         }
 
         .pill:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: var(--gradient-hover);
         }
 
         .card {
@@ -205,7 +214,7 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px #14B789;
+            box-shadow: 0 12px 20px rgba(135, 206, 235, 0.3);
         }
 
         .card h3 {
@@ -266,17 +275,17 @@
 
         button {
             padding: 0.8rem 1.5rem;
-            background-color: var(--primary-color);
+            background: var(--gradient-primary);
             color: white;
             border: none;
             border-radius: 4px;
             font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s;
         }
 
         button:hover {
-            background-color: #2a75e6;
+            background: var(--gradient-hover);
             transform: translateY(-2px);
         }
 
@@ -321,7 +330,10 @@
         }
 
         .social-link-head:hover {
-            color: #14B789;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             transform: translateY(-3px);
         }
 
@@ -569,7 +581,7 @@
 
         <section id="about">
             <h2>About Me</h2>
-            <p>I'm Fabrizio De Santis, a PhD student in Information Technology at the University of Parma. I received my M.S. in Computer Engineering and my B.S. in Computer, Electronic, and Telecommunications Engineering from <i>University of Parma</i>, Italy. My current research interests are two-fold: 1) designing neuro-symbolic methods for predictive process monitoring to provide predictions that comply with business rules and logical constraints and to enhance performance in few-data scenarios; and 2)</p>
+            <p>I'm Fabrizio De Santis, a PhD student in Information Technology at the University of Parma. I received my M.S. in Computer Engineering and my B.S. in Computer, Electronic, and Telecommunications Engineering from <i>University of Parma</i>, Italy. My current research interests are two-fold: 1) designing neuro-symbolic methods for predictive process monitoring to provide predictions that comply with business rules and logical constraints and to enhance performance in few-data scenarios; and 2) developing machine-learning methods for predictive analytics in the healthcare domain.</p>
         </section>
 
         <section id="research">
