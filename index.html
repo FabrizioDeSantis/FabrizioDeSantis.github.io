@@ -636,25 +636,113 @@
             to   { opacity: 1; transform: translateY(0);    }
         }
 
+        /* ─── BOTTOM NAV BAR (mobile M3) ─── */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 200;
+            background: var(--md-sys-color-surface-container-low);
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            box-shadow: 0 -1px 8px rgba(0,0,0,0.08);
+            height: 80px;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .bottom-nav ul {
+            list-style: none;
+            display: flex;
+            height: 100%;
+        }
+
+        .bottom-nav li { flex: 1; }
+
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 100%;
+            text-decoration: none;
+            color: var(--md-sys-color-on-surface-variant);
+            font: var(--md-typescale-label-medium);
+            position: relative;
+            transition: color 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .bottom-nav a .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 32px;
+            border-radius: var(--md-shape-full);
+            transition: background 0.2s;
+        }
+
+        .bottom-nav a .nav-icon .material-icons-round {
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .bottom-nav a.active { color: var(--md-sys-color-on-secondary-container); }
+        .bottom-nav a.active .nav-icon { background: var(--md-sys-color-secondary-container); }
+        .bottom-nav a.active .nav-icon .material-icons-round { transform: scale(1.1); }
+
         /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
-            .top-app-bar { padding: 0 16px; }
+            header nav { display: none; }
+            .bottom-nav { display: block; }
 
-            #hero { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+            main { padding-bottom: 100px; }
+            footer { padding-bottom: calc(80px + env(safe-area-inset-bottom) + 16px); }
+
+            .fab { bottom: 96px; right: 16px; width: 48px; height: 48px; font-size: 1.2rem; }
+
+            .top-app-bar { padding: 0 16px; height: 56px; }
+            .app-bar-title { font-size: 18px; }
+
+            section[id] { scroll-margin-top: 72px; }
+
+            #hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+                padding: 24px 0 16px;
+            }
+
             .hero-location { justify-content: center; }
             .icon-button-row { justify-content: center; }
             .chip-row { justify-content: center; }
+            .hero-title { font-size: 36px; line-height: 1.1; }
+            .hero-subtitle { font-size: 14px; }
 
             .contact-grid { grid-template-columns: 1fr; }
-
-            main { padding: 20px 16px 48px; }
+            main { padding: 16px 16px 100px; }
+            .section-header h2 { font-size: 20px; }
+            .md-card { padding: 16px; border-radius: var(--md-shape-large); }
         }
 
         @media (max-width: 480px) {
-            .profile-image { width: 160px; height: 160px; }
-            .hero-title { font-size: 32px; }
-            nav ul { gap: 0; }
-            nav a { padding: 8px 10px; font-size: 12px; }
+            .profile-image { width: 140px; height: 140px; }
+            .hero-title { font-size: 28px; }
+            .hero-eyebrow { font-size: 11px; }
+            .chip { font-size: 11px; padding: 5px 10px; }
+            .chip .material-icons-round { font-size: 12px !important; }
+            .card-headline { font-size: 14px; }
+            .card-supporting { font-size: 13px; }
+            .pub-title { font-size: 14px; }
+            .pub-authors { font-size: 12px; }
+            .about-text { font-size: 14px; }
+            .section-icon { width: 32px; height: 32px; border-radius: var(--md-shape-small); }
+            .section-icon .material-icons-round { font-size: 18px; }
+            .bottom-nav { height: 72px; }
+            .bottom-nav a { font-size: 10px; }
+            .bottom-nav a .nav-icon { width: 52px; height: 28px; }
+            .fab { bottom: 88px; }
         }
     </style>
 </head>
@@ -854,6 +942,28 @@
 
     </main>
 
+    <!-- BOTTOM NAV (mobile only) -->
+    <nav class="bottom-nav" id="bottomNav">
+        <ul>
+            <li><a href="#about" class="active">
+                <span class="nav-icon"><span class="material-icons-round">person</span></span>
+                About
+            </a></li>
+            <li><a href="#research">
+                <span class="nav-icon"><span class="material-icons-round">science</span></span>
+                Research
+            </a></li>
+            <li><a href="#publications">
+                <span class="nav-icon"><span class="material-icons-round">menu_book</span></span>
+                Publications
+            </a></li>
+            <li><a href="#contact">
+                <span class="nav-icon"><span class="material-icons-round">mail</span></span>
+                Contact
+            </a></li>
+        </ul>
+    </nav>
+
     <!-- FAB (scroll-to-top) -->
     <a href="#" class="fab" id="fab" aria-label="Back to top">
         <span class="material-icons-round">arrow_upward</span>
@@ -869,54 +979,50 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Scroll behaviors
-        const appBar = document.getElementById('appBar');
-        const fab = document.getElementById('fab');
-        const navLinks = document.querySelectorAll('nav a');
+    <script>
+        const appBar   = document.getElementById('appBar');
+        const fab      = document.getElementById('fab');
         const sections = document.querySelectorAll('section[id]');
+        // All nav links: both top bar and bottom nav
+        const allNavLinks = document.querySelectorAll('header nav a, #bottomNav a');
 
         window.addEventListener('scroll', () => {
             const y = window.scrollY;
 
-            // App bar elevation
             appBar.classList.toggle('scrolled', y > 10);
-
-            // FAB visibility
             fab.classList.toggle('visible', y > 300);
 
-            // Active nav link
             let current = '';
             sections.forEach(sec => {
-                if (y + 90 >= sec.offsetTop) current = sec.id;
+                if (y + 100 >= sec.offsetTop) current = sec.id;
             });
-            navLinks.forEach(a => {
+            allNavLinks.forEach(a => {
                 a.classList.toggle('active', a.getAttribute('href') === '#' + current);
             });
         });
 
-        // Ripple effect on nav links
-        navLinks.forEach(link => {
+        // Ripple on top nav links
+        document.querySelectorAll('header nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
                 ripple.style.cssText = `
                     position:absolute; border-radius:50%;
-                    background: var(--md-sys-color-primary);
-                    opacity: 0.15;
+                    background: var(--md-sys-color-primary); opacity:0.15;
                     width:${size}px; height:${size}px;
                     left:${e.clientX - rect.left - size/2}px;
                     top:${e.clientY - rect.top - size/2}px;
-                    transform: scale(0);
-                    animation: ripple 0.5s ease-out forwards;
+                    transform:scale(0); animation:ripple 0.5s ease-out forwards;
                     pointer-events:none;
                 `;
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 500);
             });
         });
 
-        const styleSheet = doc
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `@keyframes ripple { to { transform:scale(2.5); opacity:0; } }`;
+        document.head.appendChild(styleSheet);    </script>
+</body>
+</html>
