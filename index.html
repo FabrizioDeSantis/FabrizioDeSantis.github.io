@@ -80,6 +80,11 @@
 
         html { scroll-behavior: smooth; }
 
+        /* Offset anchor scroll so the sticky app bar (64px) doesn't cover section titles */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
         body {
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
@@ -824,7 +829,7 @@
                         <div>
                             <div class="contact-label">Email</div>
                             <div class="contact-value">
-                                <a href="mailto:fabrizio.desantis@unipr.it">fabrizio.desantis@unipr.it</a>
+                                <a href="/cdn-cgi/l/email-protection#8ceaedeefee5f6e5e3a2e8e9ffede2f8e5ffccf9e2e5fcfea2e5f8"><span class="__cf_email__" data-cfemail="06606764746f7c6f69286263756768726f754673686f7674286f72">[email&#160;protected]</span></a>
                             </div>
                         </div>
                     </div>
@@ -864,7 +869,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Scroll behaviors
         const appBar = document.getElementById('appBar');
         const fab = document.getElementById('fab');
@@ -914,13 +919,4 @@
             });
         });
 
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = `
-            @keyframes ripple {
-                to { transform: scale(2.5); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(styleSheet);
-    </script>
-</body>
-</html>
+        const styleSheet = doc
