@@ -267,7 +267,6 @@
         /* Icon Buttons (social) */
         .icon-button-row {
             display: flex;
-            color: var(--md-sys-color-on-surface-variant);
             gap: 8px;
             margin-bottom: 20px;
         }
@@ -285,6 +284,21 @@
             font-size: 1.1rem;
             position: relative;
             overflow: hidden;
+        }
+
+        .icon-button i {
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+            font-weight: 900; /* Use 400 for regular, 900 for solid/brands */
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ensure brands specifically use the correct weight */
+        .icon-button .fab {
+            font-weight: 400; 
         }
 
         .icon-button::before {
