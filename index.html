@@ -138,6 +138,7 @@
         nav ul li:nth-child(2) { animation-delay: 0.18s; }
         nav ul li:nth-child(3) { animation-delay: 0.26s; }
         nav ul li:nth-child(4) { animation-delay: 0.34s; }
+        nav ul li:nth-child(5) { animation-delay: 0.42s; }
 
         nav a {
             text-decoration: none;
@@ -187,8 +188,9 @@
         #about   { animation-delay: 0.35s; }
         #experiences { animation-delay: 0.45s; }
         #research    { animation-delay: 0.55s; }
-        #publications { animation-delay: 0.65s; }
-        #contact     { animation-delay: 0.75s; }
+        #assistant   { animation-delay: 0.62s; }
+        #publications { animation-delay: 0.7s; }
+        #contact     { animation-delay: 0.8s; }
 
         /* ─── HERO ─── */
         #hero {
@@ -460,6 +462,36 @@
             flex: 1;
             background: var(--md-sys-color-outline-variant);
             margin-top: 6px;
+        }
+
+        /* ─── RESEARCH ASSISTANT CARD ─── */
+        .assistant-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .assistant-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 4px solid var(--md-sys-color-tertiary-container);
+            box-shadow: var(--md-elevation-1);
+        }
+
+        .assistant-role {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--md-sys-color-tertiary-container);
+            color: var(--md-sys-color-on-tertiary-container);
+            border-radius: var(--md-shape-extra-small);
+            padding: 2px 10px;
+            font: var(--md-typescale-label-medium);
+            margin-bottom: 8px;
         }
 
         /* ─── PUBLICATIONS ─── */
@@ -778,6 +810,8 @@
             .section-header h2 { font-size: 20px; }
             .md-card { padding: 16px; border-radius: var(--md-shape-large); }
 
+            .assistant-card { justify-content: center; text-align: center; }
+
             .pub-link-hint { opacity: 0.5; transform: scale(1); }
         }
 
@@ -798,6 +832,7 @@
             .bottom-nav a { font-size: 10px; }
             .bottom-nav a .nav-icon { width: 52px; height: 28px; }
             .fab { bottom: 88px; }
+            .assistant-photo { width: 96px; height: 96px; }
         }
     </style>
 </head>
@@ -810,6 +845,7 @@
             <ul>
                 <li><a href="#about" class="active">About</a></li>
                 <li><a href="#research">Research</a></li>
+                <li><a href="#assistant">Assistant</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -923,6 +959,31 @@
             <div class="md-card">
                 <div class="card-headline">Neuro-Symbolic AI for Early Sepsis Diagnosis</div>
                 <p class="card-supporting">Development of neuro-symbolic methods for the early prediction of sepsis using clinical textual notes.</p>
+            </div>
+        </section>
+
+        <!-- RESEARCH ASSISTANT -->
+        <section id="assistant">
+            <div class="section-header">
+                <div class="section-icon">
+                    <span class="material-icons-round">pets</span>
+                </div>
+                <h2>Research Assistant</h2>
+            </div>
+            <div class="section-divider"></div>
+
+            <div class="md-card md-card-elevated assistant-card">
+                <!-- Replace cat.jpeg with your cat's photo (place the image file next to this HTML file) -->
+                <img src="mario.jpg" alt="Mario" class="assistant-photo">
+                <div>
+                    <span class="assistant-role">
+                        <span class="material-icons-round" style="font-size:14px">pets</span>
+                        Chief Motivation Officer
+                    </span>
+                    <!-- Replace the headline below with your cat's name -->
+                    <div class="card-headline">Mario</div>
+                    <p class="card-supporting">Provides moral support during long debugging sessions, occasional unsolicited keyboard reviews, and strict enforcement of nap-based deadlines.</p>
+                </div>
             </div>
         </section>
 
@@ -1053,6 +1114,10 @@
             <li><a href="#research">
                 <span class="nav-icon"><span class="material-icons-round">science</span></span>
                 Research
+            </a></li>
+            <li><a href="#assistant">
+                <span class="nav-icon"><span class="material-icons-round">pets</span></span>
+                Assistant
             </a></li>
             <li><a href="#publications">
                 <span class="nav-icon"><span class="material-icons-round">menu_book</span></span>
