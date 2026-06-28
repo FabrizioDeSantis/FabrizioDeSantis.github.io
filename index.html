@@ -836,44 +836,13 @@
         }
 
         /* ════════════════════════════════════════════════════════
-           FRUTIGER AERO — glass, gloss & floating bubbles
+           FRUTIGER AERO — glass & gloss
            Everything above stays structurally the same; these rules
            layer on the wet-glass / sky-and-water surface treatment.
            ════════════════════════════════════════════════════════ */
 
-        /* Ambient floating bubbles behind the whole page */
-        .aero-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
         body {
             background: linear-gradient(180deg, #bfe8ff 0%, #e3f6ff 35%, #fbfdff 75%, #ffffff 100%);
-        }
-
-        .aero-bg .bubble {
-            position: absolute;
-            bottom: -20vh;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 26%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.35) 30%, rgba(95,196,255,0.22) 62%, rgba(95,196,255,0.02) 100%);
-            animation: float-bubble linear infinite;
-        }
-        .aero-bg .bubble:nth-child(1) { left: 6%;  width: 150px; height: 150px; animation-duration: 28s; animation-delay: -3s; }
-        .aero-bg .bubble:nth-child(2) { left: 80%; width: 90px;  height: 90px;  animation-duration: 21s; animation-delay: -9s; }
-        .aero-bg .bubble:nth-child(3) { left: 27%; width: 46px;  height: 46px;  animation-duration: 15s; animation-delay: -5s; }
-        .aero-bg .bubble:nth-child(4) { left: 63%; width: 210px; height: 210px; animation-duration: 34s; animation-delay: -14s; opacity: .7; }
-        .aero-bg .bubble:nth-child(5) { left: 45%; width: 32px;  height: 32px;  animation-duration: 12s; animation-delay: -1s; }
-        .aero-bg .bubble:nth-child(6) { left: 92%; width: 120px; height: 120px; animation-duration: 25s; animation-delay: -17s; opacity: .55; }
-        .aero-bg .bubble:nth-child(7) { left: 13%; width: 70px;  height: 70px;  animation-duration: 19s; animation-delay: -11s; opacity: .65; }
-
-        @keyframes float-bubble {
-            0%   { transform: translateY(0) translateX(0) scale(0.92); opacity: 0; }
-            8%   { opacity: .85; }
-            88%  { opacity: .85; }
-            100% { transform: translateY(-130vh) translateX(24px) scale(1.05); opacity: 0; }
         }
 
         /* Aero glass app bar */
@@ -990,7 +959,6 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .aero-bg .bubble { animation: none !important; opacity: 0 !important; }
             section, nav ul li {
                 animation: none !important;
                 opacity: 1 !important;
@@ -1000,17 +968,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Ambient Frutiger Aero bubble layer -->
-    <div class="aero-bg" aria-hidden="true">
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-    </div>
 
     <!-- TOP APP BAR -->
     <header class="top-app-bar" id="appBar">
