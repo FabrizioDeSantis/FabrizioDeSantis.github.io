@@ -3,77 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Fabrizio De Santis - PhD Student</title>
     <style>
-        /* ─── Frutiger Aero Color / Shape / Type Tokens ─────────── */
+        /* ─── M3 Color Tokens ─────────────────────────────────── */
         :root {
-            /* Primary — sky/glass blue */
-            --md-sys-color-primary: #1e8fe0;
+            /* Primary */
+            --md-sys-color-primary: #1a6cbe;
             --md-sys-color-on-primary: #ffffff;
-            --md-sys-color-primary-container: linear-gradient(180deg, rgba(214,241,255,0.95) 0%, rgba(120,200,255,0.55) 100%);
-            --md-sys-color-on-primary-container: #0a4d7a;
+            --md-sys-color-primary-container: #d4e3ff;
+            --md-sys-color-on-primary-container: #001c3b;
 
-            /* Secondary — chrome blue-grey */
-            --md-sys-color-secondary: #2f7da8;
+            /* Secondary */
+            --md-sys-color-secondary: #545f71;
             --md-sys-color-on-secondary: #ffffff;
-            --md-sys-color-secondary-container: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(173,226,255,0.55) 100%);
-            --md-sys-color-on-secondary-container: #0a4d7a;
+            --md-sys-color-secondary-container: #d8e3f8;
+            --md-sys-color-on-secondary-container: #111c2b;
 
-            /* Tertiary — aqua / teal water */
-            --md-sys-color-tertiary: #066b66;
+            /* Tertiary */
+            --md-sys-color-tertiary: #6b548d;
             --md-sys-color-on-tertiary: #ffffff;
-            --md-sys-color-tertiary-container: linear-gradient(180deg, rgba(210,255,238,0.95) 0%, rgba(95,224,201,0.5) 100%);
-            --md-sys-color-on-tertiary-container: #0a5a54;
+            --md-sys-color-tertiary-container: #eddcff;
+            --md-sys-color-on-tertiary-container: #250e44;
 
-            /* Surface — sky & glass */
-            --md-sys-color-surface: #eaf8ff;
-            --md-sys-color-surface-variant: #cfe9f5;
-            --md-sys-color-on-surface: #123c52;
-            --md-sys-color-on-surface-variant: #3a6178;
-            --md-sys-color-surface-container-lowest: linear-gradient(165deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 100%);
-            --md-sys-color-surface-container-low: rgba(255,255,255,0.6);
-            --md-sys-color-surface-container: rgba(255,255,255,0.78);
-            --md-sys-color-surface-container-high: rgba(255,255,255,0.85);
-            --md-sys-color-surface-container-highest: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.55) 100%);
+            /* Surface */
+            --md-sys-color-surface: #f8f9ff;
+            --md-sys-color-surface-variant: #dfe2eb;
+            --md-sys-color-on-surface: #191c22;
+            --md-sys-color-on-surface-variant: #43474e;
+            --md-sys-color-surface-container-lowest: #ffffff;
+            --md-sys-color-surface-container-low: #f2f3fa;
+            --md-sys-color-surface-container: #e8eaf0;
+            --md-sys-color-surface-container-high: #e2e4eb;
+            --md-sys-color-surface-container-highest: #dcdfe6;
 
-            /* Outline — wet glass edges */
-            --md-sys-color-outline: #6fa3c4;
-            --md-sys-color-outline-variant: rgba(150,210,240,0.45);
+            /* Outline */
+            --md-sys-color-outline: #74777f;
+            --md-sys-color-outline-variant: #c4c7d0;
 
             /* Error */
-            --md-sys-color-error: #c0463f;
-            --md-sys-color-error-container: #ffe1df;
+            --md-sys-color-error: #ba1a1a;
+            --md-sys-color-error-container: #ffdad6;
 
-            /* ─── Elevation (blue-tinted, Aero glass) ─── */
-            --md-elevation-1: 0 1px 2px rgba(10,93,166,.10), 0 2px 6px rgba(10,93,166,.10);
-            --md-elevation-2: 0 2px 4px rgba(10,93,166,.12), 0 6px 16px rgba(10,93,166,.16);
-            --md-elevation-3: 0 6px 14px rgba(10,93,166,.18), 0 16px 36px rgba(10,93,166,.22);
+            /* ─── M3 Elevation (tonal) ─── */
+            --md-elevation-1: 0 1px 2px rgba(0,0,0,.1), 0 1px 3px 1px rgba(0,0,0,.07);
+            --md-elevation-2: 0 1px 2px rgba(0,0,0,.12), 0 2px 6px 2px rgba(0,0,0,.08);
+            --md-elevation-3: 0 4px 8px 3px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.12);
 
-            /* ─── Shape (bubblier) ─── */
-            --md-shape-extra-small: 8px;
-            --md-shape-small: 14px;
-            --md-shape-medium: 20px;
-            --md-shape-large: 26px;
-            --md-shape-extra-large: 32px;
+            /* ─── M3 Shape ─── */
+            --md-shape-extra-small: 4px;
+            --md-shape-small: 8px;
+            --md-shape-medium: 12px;
+            --md-shape-large: 16px;
+            --md-shape-extra-large: 28px;
             --md-shape-full: 9999px;
 
-            /* ─── Typography: Quicksand (display) + Nunito Sans (body) ─── */
-            --md-typescale-display-large: 700 57px/64px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-display-medium: 600 45px/52px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-headline-large: 600 32px/40px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-headline-medium: 600 28px/36px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-headline-small: 600 24px/32px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-title-large: 600 22px/28px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-title-medium: 700 16px/24px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-title-small: 700 14px/20px 'Quicksand', 'Segoe UI', sans-serif;
-            --md-typescale-body-large: 400 16px/24px 'Nunito Sans', sans-serif;
-            --md-typescale-body-medium: 400 14px/20px 'Nunito Sans', sans-serif;
-            --md-typescale-label-large: 600 14px/20px 'Nunito Sans', sans-serif;
-            --md-typescale-label-medium: 600 12px/16px 'Nunito Sans', sans-serif;
-            --md-typescale-label-small: 600 11px/16px 'Nunito Sans', sans-serif;
+            /* ─── M3 Typography ─── */
+            --md-typescale-display-large: 600 57px/64px 'Google Sans Display', Roboto, sans-serif;
+            --md-typescale-display-medium: 400 45px/52px 'Google Sans Display', Roboto, sans-serif;
+            --md-typescale-headline-large: 400 32px/40px 'Google Sans', Roboto, sans-serif;
+            --md-typescale-headline-medium: 400 28px/36px 'Google Sans', Roboto, sans-serif;
+            --md-typescale-headline-small: 400 24px/32px 'Google Sans', Roboto, sans-serif;
+            --md-typescale-title-large: 400 22px/28px 'Google Sans', Roboto, sans-serif;
+            --md-typescale-title-medium: 500 16px/24px 'Google Sans', Roboto, sans-serif;
+            --md-typescale-title-small: 500 14px/20px 'Google Sans', Roboto, sans-serif;
+            --md-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;
+            --md-typescale-body-medium: 400 14px/20px 'Roboto', sans-serif;
+            --md-typescale-label-large: 500 14px/20px 'Roboto', sans-serif;
+            --md-typescale-label-medium: 500 12px/16px 'Roboto', sans-serif;
+            --md-typescale-label-small: 500 11px/16px 'Roboto', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -121,7 +121,7 @@
 
         .app-bar-title span {
             color: var(--md-sys-color-primary);
-            font-weight: 700;
+            font-weight: 600;
         }
 
         nav ul {
@@ -833,137 +833,6 @@
             .bottom-nav a .nav-icon { width: 52px; height: 28px; }
             .fab { bottom: 88px; }
             .assistant-photo { width: 96px; height: 96px; }
-        }
-
-        /* ════════════════════════════════════════════════════════
-           FRUTIGER AERO — glass & gloss
-           Everything above stays structurally the same; these rules
-           layer on the wet-glass / sky-and-water surface treatment.
-           ════════════════════════════════════════════════════════ */
-
-        body {
-            background: linear-gradient(180deg, #bfe8ff 0%, #e3f6ff 35%, #fbfdff 75%, #ffffff 100%);
-        }
-
-        /* Aero glass app bar */
-        .top-app-bar {
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
-            border-bottom: 1px solid rgba(255,255,255,0.65);
-        }
-
-        /* Glass cards: blur + a soft gloss sweep across the top */
-        .md-card, .md-card-elevated {
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
-        }
-        .md-card-elevated {
-            border: 1px solid rgba(255,255,255,0.7);
-        }
-        .md-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 42%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
-            pointer-events: none;
-        }
-
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, rgba(30,143,224,.5), rgba(30,143,224,.04));
-            border-radius: 2px;
-        }
-
-        .exp-line {
-            background: linear-gradient(180deg, rgba(150,210,240,.65), rgba(150,210,240,.05));
-        }
-
-        /* Glossy droplet/orb treatment for round accents */
-        .exp-dot {
-            background: radial-gradient(circle at 32% 28%, #ffffff 0%, #8fe0ff 42%, #1e8fe0 100%);
-            box-shadow: 0 2px 6px rgba(10,93,166,.35);
-        }
-
-        .avatar-badge {
-            background: linear-gradient(160deg, #5be0d6 0%, #1e8fe0 100%);
-            border: 2px solid rgba(255,255,255,0.85);
-            box-shadow: 0 3px 8px rgba(10,93,166,.3), 0 1px 0 rgba(255,255,255,.7) inset;
-        }
-
-        .profile-image {
-            border: 5px solid rgba(255,255,255,0.85);
-            box-shadow: var(--md-elevation-2), 0 0 0 8px rgba(95,196,255,.22);
-        }
-
-        .assistant-photo {
-            border: 4px solid rgba(255,255,255,0.85);
-            box-shadow: var(--md-elevation-1), 0 0 0 6px rgba(159,230,91,.28);
-        }
-
-        .section-icon {
-            box-shadow: 0 1px 0 rgba(255,255,255,.75) inset, 0 3px 10px rgba(10,93,166,.18);
-        }
-
-        .contact-icon {
-            box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 3px 8px rgba(10,93,166,.18);
-        }
-
-        a.pub-card-link:hover .pub-link-hint {
-            background: radial-gradient(circle at 32% 28%, #ffffff 0%, #8fe0ff 60%, #1e8fe0 100%);
-            color: #ffffff;
-            box-shadow: 0 2px 6px rgba(10,93,166,.3);
-        }
-
-        /* Hero name rendered as glossy chrome-blue text */
-        .hero-title {
-            background: linear-gradient(180deg, #133a52 0%, #0a5da6 55%, #1e8fe0 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Circular, glass FAB instead of a rounded square */
-        .fab {
-            border-radius: 50%;
-            background: radial-gradient(circle at 32% 26%, #ffffff 0%, #8fe0ff 35%, #1e8fe0 78%, #0a5da6 100%);
-            color: #ffffff;
-            box-shadow: var(--md-elevation-3), 0 1px 0 rgba(255,255,255,.6) inset;
-        }
-        .fab:hover {
-            background: radial-gradient(circle at 32% 26%, #ffffff 0%, #b6ecff 35%, #2fa6f0 78%, #0a5da6 100%);
-            color: #ffffff;
-        }
-
-        footer, .bottom-nav {
-            backdrop-filter: blur(16px) saturate(150%);
-            -webkit-backdrop-filter: blur(16px) saturate(150%);
-            border-color: rgba(255,255,255,0.65);
-        }
-
-        .icon-button {
-            background: rgba(255,255,255,0.45);
-            border: 1px solid rgba(255,255,255,0.6);
-        }
-
-        /* Glossy scrollbar (WebKit/Blink) */
-        ::-webkit-scrollbar { width: 12px; height: 12px; }
-        ::-webkit-scrollbar-track { background: rgba(190,232,255,.25); }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #8fe0ff, #1e8fe0);
-            border-radius: 999px;
-            border: 2px solid rgba(255,255,255,.7);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #b6ecff, #2fa6f0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            section, nav ul li {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
         }
     </style>
 </head>
