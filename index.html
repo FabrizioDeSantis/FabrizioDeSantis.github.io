@@ -274,6 +274,34 @@
         .authors { margin-top: 0.3rem; font-size: 0.9375rem; color: var(--faint); }
         .authors strong { font-weight: 500; color: var(--dim); }
 
+        /* BibTeX toggle and box */
+        .pub-actions { margin-top: 0.6rem; }
+        .chip {
+            padding: 0.2rem 0.75rem;
+            border: 1px solid var(--line-2);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--dim);
+            font: inherit;
+            font-size: 0.8125rem;
+            cursor: pointer;
+            transition: border-color 0.25s, color 0.25s, background 0.25s;
+        }
+        .chip:hover, .chip[aria-expanded="true"] { border-color: var(--sage); color: var(--sage); background: var(--sage-bg); }
+        .bibtex { position: relative; margin-top: 0.75rem; border: 1px solid var(--line); border-radius: 10px; background: var(--raised); }
+        .bibtex[hidden] { display: none; }
+        .bibtex pre {
+            margin: 0;
+            padding: 0.9rem 1rem;
+            padding-right: 5.5rem;
+            overflow-x: auto;
+            font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            color: var(--dim);
+        }
+        .bibtex .chip { position: absolute; top: 0.6rem; right: 0.6rem; background: var(--surface); }
+
         /* Mario */
         .assistant { display: flex; gap: 1.25rem; align-items: center; }
         .assistant img { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: saturate(0.85); }
@@ -415,33 +443,11 @@
 
         <section id="publications" class="split">
             <h2>Publications</h2>
-            <ul class="pubs">
-                <li>
-                    <p class="venue">BPM 2026</p>
-                    <p class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-032-37777-7_23" target="_blank" rel="noopener noreferrer">Fairness in Prescriptive Process Analytics: Integrating Fairness Constraints into the Learning Phase</a></p>
-                    <p class="authors"><strong>Fabrizio De Santis</strong>, Alessandro Padella, Gyunam Park, Francesco Zanichelli, Massimiliano de Leoni</p>
-                </li>
-                <li>
-                    <p class="venue">CAiSE 2026</p>
-                    <p class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-032-28117-3_13" target="_blank" rel="noopener noreferrer">Compliance-Aware Predictive Process Monitoring: A Neuro-Symbolic Approach</a></p>
-                    <p class="authors"><strong>Fabrizio De Santis</strong>, Gyunam Park, Wil M.P. van der Aalst, Francesco Zanichelli</p>
-                </li>
-                <li>
-                    <p class="venue">PAKDD 2026</p>
-                    <p class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-981-92-1462-4_9" target="_blank" rel="noopener noreferrer">Neuro-Symbolic Learning for Predictive Process Monitoring via Two-Stage Logic Tensor Networks with Rule Pruning</a></p>
-                    <p class="authors"><strong>Fabrizio De Santis</strong>, Gyunam Park, Francesco Zanichelli</p>
-                </li>
-                <li>
-                    <p class="venue">SynIRgy Workshop at ECIR 2026</p>
-                    <p class="pub-title">AMBER: A Modular Evaluation Pipeline for Business-Oriented Recommender Systems</p>
-                    <p class="authors">Francesca Stefano, Qian Hua Ma, <strong>Fabrizio De Santis</strong>, Francesco Zanichelli</p>
-                </li>
-                <li>
-                    <p class="venue">Engineering Applications of Artificial Intelligence</p>
-                    <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0952197626012029" target="_blank" rel="noopener noreferrer">Neuro-symbolic artificial intelligence for real-time sepsis mortality prediction</a></p>
-                    <p class="authors"><strong>Fabrizio De Santis</strong>, Gyunam Park, Francesco Zanichelli</p>
-                </li>
-            </ul>
+            <div>
+                <!-- Filled from publications.js -->
+                <ul class="pubs" id="pubs"></ul>
+                <noscript><p class="meta">The publication list needs JavaScript. See my <a href="cv.pdf">CV</a> for the full list.</p></noscript>
+            </div>
         </section>
 
         <section id="assistant" class="split">
@@ -476,8 +482,106 @@
     </footer>
 
 </div>
+<script src="publications.js"></script>
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Publications: render the list and a BibTeX box per paper
+    (function () {
+        var list = document.getElementById('pubs');
+        var pubs = window.PUBLICATIONS || [];
+        var SELF = 'De Santis';
+
+        function el(tag, className, text) {
+            var node = document.createElement(tag);
+            if (className) node.className = className;
+            if (text) node.textContent = text;
+            return node;
+        }
+
+        function toBibtex(pub) {
+            var fields = [
+                ['title', pub.title],
+                ['author', pub.authors.map(function (a) { return a[1] + ', ' + a[0]; }).join(' and ')]
+            ];
+            Object.keys(pub.bib).forEach(function (name) {
+                if (name !== 'type' && name !== 'key') fields.push([name, pub.bib[name]]);
+            });
+            fields.push(['year', String(pub.year)]);
+            if (pub.url) fields.push(['url', pub.url]);
+            return '@' + pub.bib.type + '{' + pub.bib.key + ',\n' +
+                fields.map(function (f) { return '  ' + f[0] + ' = {' + f[1] + '}'; }).join(',\n') +
+                '\n}';
+        }
+
+        function copy(text, button) {
+            var done = function () {
+                button.textContent = 'Copied';
+                setTimeout(function () { button.textContent = 'Copy'; }, 1500);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done);
+            } else {
+                var area = document.createElement('textarea');
+                area.value = text;
+                document.body.appendChild(area);
+                area.select();
+                try { document.execCommand('copy'); done(); } catch (e) {}
+                document.body.removeChild(area);
+            }
+        }
+
+        pubs.forEach(function (pub, i) {
+            var li = el('li');
+            li.appendChild(el('p', 'venue', pub.venue));
+
+            var title = el('p', 'pub-title');
+            if (pub.url) {
+                var link = el('a', null, pub.title);
+                link.href = pub.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                title.appendChild(link);
+            } else {
+                title.textContent = pub.title;
+            }
+            li.appendChild(title);
+
+            var authors = el('p', 'authors');
+            pub.authors.forEach(function (a, j) {
+                if (j) authors.appendChild(document.createTextNode(', '));
+                var name = a[0] + ' ' + a[1];
+                authors.appendChild(a[1] === SELF ? el('strong', null, name) : document.createTextNode(name));
+            });
+            li.appendChild(authors);
+
+            var bibtex = toBibtex(pub);
+            var box = el('div', 'bibtex');
+            box.id = 'bibtex-' + i;
+            box.hidden = true;
+            box.appendChild(el('pre', null, bibtex));
+            var copyBtn = el('button', 'chip', 'Copy');
+            copyBtn.type = 'button';
+            copyBtn.setAttribute('aria-label', 'Copy BibTeX');
+            copyBtn.addEventListener('click', function () { copy(bibtex, copyBtn); });
+            box.appendChild(copyBtn);
+
+            var toggle = el('button', 'chip', 'BibTeX');
+            toggle.type = 'button';
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-controls', box.id);
+            toggle.addEventListener('click', function () {
+                box.hidden = !box.hidden;
+                toggle.setAttribute('aria-expanded', String(!box.hidden));
+            });
+
+            var actions = el('p', 'pub-actions');
+            actions.appendChild(toggle);
+            li.appendChild(actions);
+            li.appendChild(box);
+            list.appendChild(li);
+        });
+    })();
 
     (function () {
         var root = document.documentElement;
