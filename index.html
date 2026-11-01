@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
     <title>Fabrizio De Santis - PhD Student</title>
     <meta name="description" content="Fabrizio De Santis, PhD candidate in Information Technology at the University of Parma, working on neuro-symbolic AI for predictive process monitoring and healthcare.">
     <meta name="author" content="Fabrizio De Santis">
     <meta name="color-scheme" content="dark light">
-    <meta name="theme-color" content="#121416">
+    <meta name="theme-color" content="#0E0B1D">
     <script>
         // Apply the saved (or system) theme before first paint to avoid a flash
         (function () {
@@ -20,6 +20,7 @@
                 theme = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
             }
             document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.classList.add('js');
         })();
     </script>
     <link rel="icon" href="propic.jpeg" type="image/jpeg">
@@ -32,104 +33,110 @@
     <meta name="twitter:card" content="summary">
     <style>
         /* ─── Tokens ─────────────────────────────────────────── */
+        /* Palette: #0E0B1D #2A1E4D #5A3B8C #887CC7 #C9C2E3 #3A3A52 */
         :root {
-            --bg:       #121416;
-            --surface:  #181b1e;
-            --raised:   #1d2124;
-            --line:     rgba(255, 255, 255, 0.07);
-            --line-2:   rgba(255, 255, 255, 0.12);
-            --text:     #e4e6e3;
-            --dim:      #9ba3a3;
-            --faint:    #6d7576;
-            --sage:     #93c0a9;
-            --sage-bg:  rgba(147, 192, 169, 0.1);
-            --sage-hi:  #a6ceba;
-            --on-sage:  #10201a;
-            --sand:     #d4b98c;
-            --glow:     rgba(147, 192, 169, 0.06);
+            --bg:         #0E0B1D;
+            --surface:    #2A1E4D;
+            --ink:        #C9C2E3;
+            --strong:     #EEEBF7;
+            --muted:      #887CC7;
+            --accent:     #5A3B8C;
+            --accent-hi:  #6A4AA0;
+            --accent-ink: #F3F1FA;
+            --mark:       #2A1E4D;
 
-            --sans:  'Inter', system-ui, sans-serif;
-            --serif: 'Newsreader', Georgia, serif;
-            --radius: 14px;
+            --font: 'Work Sans', 'Segoe UI', system-ui, sans-serif;
+            --step-small:   clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+            --step-body:    clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+            --step-lead:    clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+            --step-head:    clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
+            --step-display: clamp(3rem, 1rem + 6.4vw, 7rem);
+
+            --margin: clamp(1.25rem, 0.5rem + 3.5vw, 4rem);
 
             color-scheme: dark;
         }
         /* Light theme: chosen with the toggle, or by the system when nothing is saved and JS is off */
         :root[data-theme="light"] {
-            --bg:       #f5f4f0;
-            --surface:  #ffffff;
-            --raised:   #ecebe6;
-            --line:     rgba(20, 24, 22, 0.08);
-            --line-2:   rgba(20, 24, 22, 0.15);
-            --text:     #1d2220;
-            --dim:      #545d5a;
-            --faint:    #636c69;
-            --sage:     #3b7559;
-            --sage-bg:  rgba(59, 117, 89, 0.09);
-            --sage-hi:  #2f6249;
-            --on-sage:  #ffffff;
-            --sand:     #81612a;
-            --glow:     rgba(59, 117, 89, 0.07);
+            --bg:         #F2F0F8;
+            --surface:    #E4E0F1;
+            --ink:        #0E0B1D;
+            --strong:     #0E0B1D;
+            --muted:      #3A3A52;
+            --accent:     #5A3B8C;
+            --accent-hi:  #4A2F75;
+            --accent-ink: #F3F1FA;
+            --mark:       #C9C2E3;
             color-scheme: light;
         }
         @media (prefers-color-scheme: light) {
             :root:not([data-theme]) {
-                --bg:       #f5f4f0;
-                --surface:  #ffffff;
-                --raised:   #ecebe6;
-                --line:     rgba(20, 24, 22, 0.08);
-                --line-2:   rgba(20, 24, 22, 0.15);
-                --text:     #1d2220;
-                --dim:      #545d5a;
-                --faint:    #636c69;
-                --sage:     #3b7559;
-                --sage-bg:  rgba(59, 117, 89, 0.09);
-                --sage-hi:  #2f6249;
-                --on-sage:  #ffffff;
-                --sand:     #81612a;
-                --glow:     rgba(59, 117, 89, 0.07);
+                --bg:         #F2F0F8;
+                --surface:    #E4E0F1;
+                --ink:        #0E0B1D;
+                --strong:     #0E0B1D;
+                --muted:      #3A3A52;
+                --accent:     #5A3B8C;
+                --accent-hi:  #4A2F75;
+                --accent-ink: #F3F1FA;
+                --mark:       #C9C2E3;
                 color-scheme: light;
             }
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: var(--surface) var(--bg); }
 
         body {
-            font-family: var(--sans);
-            font-size: 1.0625rem;
-            line-height: 1.75;
-            color: var(--text);
+            font-family: var(--font);
+            font-size: var(--step-body);
+            line-height: 1.55;
+            color: var(--ink);
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* A single, very faint glow so the page isn't flat black */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background: radial-gradient(50rem 30rem at 80% -10%, var(--glow), transparent 70%);
-        }
+        ::selection { background: var(--accent); color: var(--accent-ink); }
+        img { display: block; max-width: 100%; }
 
-        a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; text-decoration-thickness: 1px; transition: color 0.25s, text-decoration-color 0.25s; }
-        a:hover { color: var(--sage); text-decoration-color: var(--sage); }
-        :focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; border-radius: 4px; }
+        a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-decoration-thickness: 0.06em; text-underline-offset: 0.22em; transition: color 0.18s, text-decoration-color 0.18s; }
+        a:hover { color: var(--strong); text-decoration-color: currentColor; }
+        :focus-visible { outline: 2px solid var(--muted); outline-offset: 3px; }
 
         .skip { position: absolute; left: -999px; }
-        .skip:focus { left: 1rem; top: 1rem; background: var(--raised); padding: 0.4rem 0.9rem; border-radius: 8px; z-index: 20; }
+        .skip:focus { left: 1rem; top: 1rem; background: var(--accent); color: var(--accent-ink); padding: 0.5rem 1rem; z-index: 20; }
 
-        .wrap { max-width: 60rem; margin: 0 auto; padding: 0 2rem; }
+        .frame { max-width: 82rem; margin: 0 auto; padding: 0 var(--margin); }
 
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 1.75rem 2rem;
+        /* Every section hangs from the same vertical line at 34% */
+        .rail { display: grid; grid-template-columns: 34% minmax(0, 1fr); }
+        .rail > :first-child { padding-right: 2rem; }
+
+        h2 {
+            font-size: var(--step-head);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--strong);
         }
-        .label { font-size: 0.8125rem; font-weight: 500; color: var(--faint); letter-spacing: 0.01em; }
+        h3 { font-size: var(--step-body); font-weight: 500; line-height: 1.4; color: var(--strong); }
+        .muted { color: var(--muted); }
+        .small { font-size: var(--step-small); }
+
+        /* Buttons: flat, square, small */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.75rem;
+            padding: 0 1.25rem;
+            background: var(--accent);
+            color: var(--accent-ink);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.18s, transform 0.14s;
+        }
+        .button:hover { background: var(--accent-hi); color: var(--accent-ink); }
+        .button:active { transform: translateY(1px); }
 
         /* ─── Header ─────────────────────────────────────────── */
         .site-header {
@@ -138,217 +145,186 @@
             justify-content: space-between;
             gap: 1rem 2rem;
             flex-wrap: wrap;
-            padding: 2rem 0;
-            font-size: 0.9375rem;
+            padding: 1.75rem 0;
+            font-size: var(--step-small);
         }
-        .site-header .home { text-decoration: none; font-weight: 600; }
-        .site-header ul { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 2rem; }
-        .site-header nav a { color: var(--dim); text-decoration: none; }
-        .site-header nav a:hover { color: var(--text); }
-        .site-header nav a.cv { padding: 0.4rem 1rem; border: 1px solid var(--line-2); border-radius: 999px; color: var(--text); }
-        .site-header nav a.cv:hover { border-color: var(--sage); color: var(--sage); }
+        .site-header .home { font-weight: 500; text-decoration: none; color: var(--strong); }
+        .site-header ul { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.75rem; }
+        .site-header nav a { text-decoration: none; }
 
-        /* Theme toggle: shows the moon in dark mode, the sun in light mode */
         .theme-toggle {
             display: grid;
             place-items: center;
-            width: 2.25rem; height: 2.25rem;
-            border: 1px solid var(--line-2);
-            border-radius: 50%;
-            background: transparent;
-            color: var(--dim);
+            width: 2.75rem; height: 2.75rem;
+            border: 0;
+            background: var(--surface);
+            color: var(--ink);
             cursor: pointer;
-            transition: border-color 0.25s, color 0.25s, background 0.25s;
+            transition: background-color 0.18s, color 0.18s, transform 0.14s;
         }
-        .theme-toggle:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-bg); }
-        .theme-toggle svg { width: 1.05rem; height: 1.05rem; grid-area: 1 / 1; transition: opacity 0.3s, transform 0.4s ease; }
+        .theme-toggle:hover { background: var(--accent); color: var(--accent-ink); }
+        .theme-toggle:active { transform: scale(0.94); }
+        .theme-toggle svg { width: 1.1rem; height: 1.1rem; grid-area: 1 / 1; transition: opacity 0.3s, transform 0.4s ease; }
         .theme-toggle .sun { opacity: 0; transform: rotate(-60deg) scale(0.6); }
         :root[data-theme="light"] .theme-toggle .sun  { opacity: 1; transform: none; }
         :root[data-theme="light"] .theme-toggle .moon { opacity: 0; transform: rotate(60deg) scale(0.6); }
         :root:not([data-theme]) .theme-toggle { display: none; } /* no JS, no toggle */
 
         /* ─── Hero ───────────────────────────────────────────── */
-        #hero { padding: 5rem 0 4.5rem; }
-        .id-row { display: flex; gap: 1.1rem; align-items: center; margin-bottom: 2.5rem; }
-        .portrait { width: 3.75rem; height: 3.75rem; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: saturate(0.85); }
-        .id-row p { font-size: 0.9375rem; line-height: 1.5; }
-        .id-row .label { font-size: 0.875rem; }
-
+        .hero { padding: clamp(3.5rem, 1rem + 9vh, 8rem) 0 0; }
         h1 {
-            max-width: 40rem;
-            font-weight: 500;
-            font-size: clamp(2.5rem, 6.5vw, 4rem);
-            line-height: 1.1;
-            letter-spacing: -0.025em;
+            font-size: var(--step-display);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.035em;
+            color: var(--strong);
         }
-        h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--sage); letter-spacing: -0.01em; }
-        .lede { margin-top: 1.5rem; max-width: 36rem; font-size: 1.1875rem; color: var(--dim); }
-        .links { list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
-        .links a {
-            display: inline-block;
-            padding: 0.55rem 1.2rem;
-            border: 1px solid var(--line-2);
-            border-radius: 999px;
-            font-size: 0.9375rem;
-            text-decoration: none;
-            transition: border-color 0.25s, color 0.25s, background 0.25s;
-        }
-        .links a:hover { border-color: var(--sage); background: var(--sage-bg); }
-        .links a.primary { background: var(--sage); border-color: var(--sage); color: var(--on-sage); font-weight: 500; }
-        .links a.primary:hover { background: var(--sage-hi); border-color: var(--sage-hi); color: var(--on-sage); }
+        .hero .rail { margin-top: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
+        .hero .role { font-size: var(--step-small); color: var(--muted); padding-top: 0.4rem; max-width: 26ch; }
+        .hero .lede { font-size: var(--step-lead); line-height: 1.35; max-width: 32ch; color: var(--strong); font-weight: 300; }
+        .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-top: 2rem; }
 
         /* ─── Sections ───────────────────────────────────────── */
-        section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
-        .split { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 2.5rem; }
-        h2 { font-size: 0.9375rem; font-weight: 500; color: var(--dim); line-height: 1.75; }
-        h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; }
-        .meta { color: var(--dim); }
-        .prose { max-width: 40rem; }
-        .prose p + p { margin-top: 1.1rem; }
-        .prose p:not(:first-child) { color: var(--dim); }
+        main > section { padding-top: clamp(4.5rem, 2.5rem + 4.5vw, 7.5rem); }
+        .body { max-width: 38rem; }
 
-        .entry .label { margin-top: 0.5rem; }
-        .entry h3 + .meta { margin-top: 0.3rem; }
+        /* About: a letter */
+        .letter .avatar { width: 2.75rem; height: 2.75rem; border-radius: 50%; object-fit: cover; margin-bottom: 1.75rem; }
+        .letter p + p { margin-top: 1.1em; }
+        .letter mark { background: var(--mark); color: var(--strong); padding: 0.05em 0.2em; }
+        .sign { margin-top: 2.25rem; }
+        .sign .name { font-size: var(--step-lead); font-style: italic; color: var(--strong); }
 
-        .stack { display: grid; gap: 1rem; }
-        .stack .card p { margin-top: 0.4rem; color: var(--dim); }
+        /* Experience: side facts, wide statement */
+        .facts { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 2rem 2.5rem; }
+        .facts dl { display: grid; gap: 1.1rem; align-content: start; font-size: var(--step-small); }
+        .facts dt { color: var(--muted); }
+        .facts dd { color: var(--strong); }
+        .facts .statement { font-size: var(--step-lead); font-weight: 300; line-height: 1.35; max-width: 30ch; }
+        .facts .statement + p { margin-top: 1rem; }
 
-        /* Demo: one patient, one prediction */
-        .demo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; padding: 1.75rem; }
-        .demo-intro p + p { margin-top: 0.75rem; }
-        .demo-intro .label { margin-bottom: 0.4rem; }
-        .trace { list-style: none; position: relative; }
-        .trace li {
-            --d: calc(0.6s + var(--i) * 0.45s);
-            position: relative;
-            display: flex;
-            gap: 0.85rem;
-            padding: 0.3rem 0 0.3rem 1.5rem;
-            font-size: 0.9375rem;
-            animation: settle 0.9s ease var(--d) both;
+        /* Research: a quiet ledger */
+        .ledger { list-style: none; }
+        .ledger li + li { margin-top: 2.5rem; }
+        .ledger p { margin-top: 0.5rem; }
+
+        /* Publications: two-ended rows */
+        .rows { list-style: none; }
+        .row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 9rem;
+            gap: 0.35rem 2rem;
         }
-        .trace li::before {
-            content: '';
-            position: absolute;
-            left: 0.2rem; top: 0.85rem;
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--faint);
-        }
-        .trace li:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: calc(0.2rem + 3px);
-            top: 1.45rem;
-            bottom: -0.55rem;
-            width: 1px;
-            background: var(--line-2);
-        }
-        .trace .n { font-size: 0.8125rem; color: var(--faint); font-variant-numeric: tabular-nums; padding-top: 0.08rem; }
-        .trace li.predicted { color: var(--sage); }
-        .trace li.predicted::before { background: transparent; border: 1px solid var(--sage); box-shadow: 0 0 0 4px var(--sage-bg); }
-        .trace li.predicted .tag { margin-left: auto; font-size: 0.75rem; color: var(--faint); padding-top: 0.15rem; }
-        @keyframes settle { from { opacity: 0; } to { opacity: 1; } }
+        .row + .row { margin-top: 2.25rem; }
+        .row .what { font-weight: 500; line-height: 1.4; color: var(--strong); }
+        .row .value { font-size: var(--step-small); color: var(--muted); text-align: right; line-height: 1.45; padding-top: 0.2rem; }
+        .row .detail { grid-column: 1; font-size: var(--step-small); }
+        .row .detail strong { font-weight: 500; color: var(--strong); }
+        .pub-actions { grid-column: 1; margin-top: 0.35rem; }
 
-        .rule {
-            margin-top: 1.25rem;
-            padding: 0.85rem 1rem;
-            border-radius: 10px;
-            background: var(--sage-bg);
-            font-size: 0.875rem;
-            animation: settle 1s ease 3.6s both;
-        }
-        .rule strong { font-weight: 500; color: var(--sage); }
-        .rule code { display: block; margin-top: 0.2rem; font-family: ui-monospace, 'Cascadia Code', Consolas, monospace; font-size: 0.8125rem; color: var(--dim); overflow-wrap: anywhere; }
-
-        /* Publications */
-        .pubs { list-style: none; }
-        .pubs li { padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
-        .pubs li:first-child { padding-top: 0; }
-        .pubs li:last-child { border-bottom: 0; }
-        .venue { font-size: 0.8125rem; color: var(--sand); margin-bottom: 0.3rem; }
-        .pub-title { font-size: 1.0625rem; font-weight: 500; line-height: 1.5; }
-        .pub-title a { text-decoration: none; }
-        .pub-title a::after { content: ' \2197'; color: var(--faint); transition: color 0.25s; }
-        .pub-title a:hover::after { color: var(--sage); }
-        .authors { margin-top: 0.3rem; font-size: 0.9375rem; color: var(--faint); }
-        .authors strong { font-weight: 500; color: var(--dim); }
-
-        /* BibTeX toggle and box */
-        .pub-actions { margin-top: 0.6rem; }
-        .chip {
-            padding: 0.2rem 0.75rem;
-            border: 1px solid var(--line-2);
-            border-radius: 999px;
-            background: transparent;
-            color: var(--dim);
+        .text-button {
+            min-height: 2.25rem;
+            padding: 0 0.85rem;
+            border: 0;
+            background: var(--surface);
+            color: var(--ink);
             font: inherit;
-            font-size: 0.8125rem;
+            font-size: var(--step-small);
             cursor: pointer;
-            transition: border-color 0.25s, color 0.25s, background 0.25s;
+            transition: background-color 0.18s, color 0.18s, transform 0.14s;
         }
-        .chip:hover, .chip[aria-expanded="true"] { border-color: var(--sage); color: var(--sage); background: var(--sage-bg); }
-        .bibtex { position: relative; margin-top: 0.75rem; border: 1px solid var(--line); border-radius: 10px; background: var(--raised); }
+        .text-button:hover, .text-button[aria-expanded="true"] { background: var(--accent); color: var(--accent-ink); }
+        .text-button:active { transform: translateY(1px); }
+        .bibtex { grid-column: 1 / -1; position: relative; margin-top: 0.5rem; background: var(--surface); }
         .bibtex[hidden] { display: none; }
         .bibtex pre {
             margin: 0;
-            padding: 0.9rem 1rem;
-            padding-right: 5.5rem;
+            padding: 1rem 1.1rem;
+            padding-right: 6rem;
             overflow-x: auto;
             font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
-            font-size: 0.8125rem;
-            line-height: 1.6;
-            color: var(--dim);
-        }
-        .bibtex .chip { position: absolute; top: 0.6rem; right: 0.6rem; background: var(--surface); }
-
-        /* Mario */
-        .assistant { display: flex; gap: 1.25rem; align-items: center; }
-        .assistant img { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: saturate(0.85); }
-        .assistant .meta { font-family: var(--serif); font-style: italic; font-size: 1.0625rem; }
-
-        /* Contact */
-        .contact .email { display: inline-block; margin-top: 1rem; font-size: clamp(1.25rem, 3vw, 1.625rem); font-weight: 500; letter-spacing: -0.01em; word-break: break-word; }
-        .contact address { margin-top: 2rem; font-style: normal; color: var(--dim); font-size: 0.9375rem; line-height: 1.7; }
-        .contact address .label { display: block; margin-bottom: 0.25rem; }
-
-        footer {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem 2rem;
-            padding: 2rem 0 3rem;
-            border-top: 1px solid var(--line);
             font-size: 0.875rem;
-            color: var(--faint);
+            line-height: 1.6;
+            color: var(--ink);
+        }
+        .bibtex .text-button { position: absolute; top: 0.6rem; right: 0.6rem; background: var(--accent); color: var(--accent-ink); }
+
+        /* Research assistant */
+        .assistant { display: flex; align-items: center; gap: 1.5rem; }
+        .assistant img { width: 7.5rem; height: 7.5rem; object-fit: cover; flex-shrink: 0; }
+        .assistant .role { font-style: italic; color: var(--muted); }
+
+        /* Contact: sentence, portrait, links */
+        .contact .band {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 10rem minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .contact .statement { font-size: var(--step-lead); font-weight: 300; line-height: 1.3; color: var(--strong); max-width: 22ch; }
+        .contact .portrait { width: 10rem; height: 10rem; object-fit: cover; }
+        .contact .email { display: inline-block; font-size: var(--step-body); font-weight: 500; color: var(--strong); overflow-wrap: anywhere; }
+        .contact ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-top: 0.75rem; }
+        .contact address { margin-top: 1.5rem; font-style: normal; font-size: var(--step-small); line-height: 1.6; }
+        /* The one field on the page: contact closes on the deep indigo */
+        main > section.contact {
+            margin-top: clamp(4.5rem, 2.5rem + 4.5vw, 7.5rem);
+            padding: clamp(2rem, 1rem + 4vw, 5rem) var(--margin);
+            margin-inline: calc(-1 * var(--margin));
+            background: var(--surface);
+        }
+        .contact a { text-decoration-color: currentColor; }
+
+        /* Footer: a single quiet line */
+        footer {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: baseline;
+            gap: 0.5rem 2rem;
+            margin-top: clamp(6rem, 3rem + 8vh, 10rem);
+            padding-bottom: 2rem;
+            font-size: var(--step-small);
+            color: var(--muted);
         }
         footer ul { list-style: none; display: flex; gap: 1.5rem; }
-        footer a { color: var(--dim); text-decoration: none; }
+        footer a { color: var(--ink); }
+        footer p:last-child { text-align: right; }
+
+        /* ─── Entrances: short and quiet, only when JS can reveal them again ─── */
+        .js [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--d, 0) * 70ms); }
+        .js [data-reveal].in { opacity: 1; transform: none; }
 
         /* ─── Responsive ─────────────────────────────────────── */
-        @media (max-width: 800px) {
-            .split { grid-template-columns: 1fr; gap: 1rem; }
-            .demo { grid-template-columns: 1fr; }
+        @media (max-width: 860px) {
+            .rail { grid-template-columns: 1fr; row-gap: 1.75rem; }
+            .rail > :first-child { padding-right: 0; }
+            .hero .rail { row-gap: 1rem; }
+            .contact .band { grid-template-columns: 6rem minmax(0, 1fr); gap: 1.25rem 1.5rem; }
+            .contact .statement { grid-column: 1 / -1; max-width: 26ch; }
+            .contact .portrait { width: 6rem; height: 6rem; }
+            footer { grid-template-columns: 1fr; gap: 0.5rem; }
+            footer p:last-child { text-align: left; }
         }
-        @media (max-width: 640px) {
-            .wrap { padding: 0 1rem; }
-            .site-header { flex-direction: column; align-items: flex-start; padding: 1.5rem 0; }
-            .site-header ul { gap: 0.5rem 1.25rem; }
-            #hero { padding: 3rem 0; }
-            section { padding: 2.5rem 0; }
-            .card { padding: 1.4rem 1.25rem; }
-            .demo { padding: 1.25rem; }
+        @media (max-width: 560px) {
+            .site-header { padding: 1.25rem 0; }
+            .site-header ul { gap: 0.25rem 1.1rem; }
+            .row { grid-template-columns: 1fr; }
+            .row .value { grid-row: 2; text-align: left; padding-top: 0; }
+            .facts { grid-template-columns: 1fr; }
+            .facts dl { grid-template-columns: 1fr 1fr; }
+            .assistant img { width: 6rem; height: 6rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             *, *::before, *::after { animation: none !important; transition: none !important; }
+            .js [data-reveal] { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
+<div class="frame">
 
     <header class="site-header">
         <a class="home" href="#">Fabrizio De Santis</a>
@@ -358,7 +334,7 @@
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a class="cv" href="cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+                <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
                 <li>
                     <button class="theme-toggle" type="button" aria-label="Switch to light mode">
                         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
@@ -370,115 +346,107 @@
     </header>
 
     <main id="main">
-
-        <section id="hero" aria-label="Introduction" style="border-top: 0">
-            <div class="id-row">
-                <img src="propic.jpeg" alt="Portrait of Fabrizio De Santis" class="portrait" width="240" height="240" fetchpriority="high">
+        <div class="hero">
+            <h1>Fabrizio<br>De Santis</h1>
+            <div class="rail">
+                <p class="role">PhD candidate in Information Technology, University of Parma, Italy</p>
                 <div>
-                    <p>PhD candidate in Information Technology</p>
-                    <p class="label">University of Parma, Italy</p>
+                    <p class="lede">I build models that predict how a process will unfold and keep those predictions consistent with the rules the process has to follow.</p>
+                    <div class="actions">
+                        <a class="button" href="mailto:fabrizio.desantis@unipr.it">Email me</a>
+                        <a href="https://github.com/FabrizioDeSantis" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/fabrizio-de-santis-075474158/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+                    </div>
                 </div>
             </div>
-            <h1>Fabrizio <em>De&nbsp;Santis</em></h1>
-            <p class="lede">I build models that predict how a process will unfold and keep those predictions consistent with the rules the process has to follow.</p>
-            <ul class="links">
-                <li><a class="primary" href="mailto:fabrizio.desantis@unipr.it">Email me</a></li>
-                <li><a href="https://github.com/FabrizioDeSantis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/fabrizio-de-santis-075474158/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+        </div>
+
+        <section id="about" class="rail letter" aria-labelledby="about-title">
+            <h2 id="about-title" data-reveal>About</h2>
+            <div class="body">
+                <img class="avatar" src="propic.jpeg" alt="" width="44" height="44" loading="lazy" data-reveal>
+                <p data-reveal style="--d:1">I'm a PhD student in Information Technology at the University of Parma. My research has two strands. The first is <mark>neuro-symbolic methods for predictive process monitoring</mark>, so that predictions comply with business rules and logical constraints and hold up when data is limited. The second is machine learning for predictive analytics in healthcare.</p>
+                <p data-reveal style="--d:2">Before the PhD I received my M.S. in Computer Engineering and my B.S. in Computer, Electronic, and Telecommunications Engineering, both from the University of Parma.</p>
+                <div class="sign" data-reveal style="--d:3">
+                    <p class="name">Fabrizio De Santis</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="rail" aria-labelledby="experience-title">
+            <h2 id="experience-title" data-reveal>Experience</h2>
+            <div class="facts">
+                <dl data-reveal style="--d:1">
+                    <div><dt>Period</dt><dd>Nov 2024 – May 2025</dd></div>
+                    <div><dt>Host</dt><dd>RWTH Aachen University</dd></div>
+                </dl>
+                <div data-reveal style="--d:2">
+                    <h3 class="statement">Visiting researcher, RWTH Aachen University</h3>
+                    <p>Chair of Process and Data Science (PADS), supervised by Wil M.P. van der Aalst</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="rail" aria-labelledby="research-title">
+            <h2 id="research-title" data-reveal>Research</h2>
+            <ul class="ledger body">
+                <li data-reveal style="--d:1">
+                    <h3>Neuro-symbolic predictive process monitoring</h3>
+                    <p>Combining neural models with logical knowledge so that predictions about running process instances are both accurate and compliant with business rules.</p>
+                </li>
+                <li data-reveal style="--d:2">
+                    <h3>Neuro-symbolic AI for early sepsis diagnosis</h3>
+                    <p>Predicting sepsis early from clinical textual notes, using methods that encode medical knowledge alongside learned representations.</p>
+                </li>
             </ul>
         </section>
 
-        <section id="about" class="split">
-            <h2>About</h2>
-            <div class="prose">
-                <p>I'm a PhD student in Information Technology at the University of Parma. My research has two strands. The first is neuro-symbolic methods for predictive process monitoring, so that predictions comply with business rules and logical constraints and hold up when data is limited. The second is machine learning for predictive analytics in healthcare.</p>
-                <p>Before the PhD I received my M.S. in Computer Engineering and my B.S. in Computer, Electronic, and Telecommunications Engineering, both from the University of Parma.</p>
-            </div>
-        </section>
-
-        <section id="experience" class="split">
-            <h2>Experience</h2>
-            <div class="entry">
-                <h3>Visiting researcher, RWTH Aachen University</h3>
-                <p class="meta">Chair of Process and Data Science (PADS), supervised by Wil M.P. van der Aalst</p>
-                <p class="label">Nov 2024 – May 2025</p>
-            </div>
-        </section>
-
-        <section id="research" class="split">
-            <h2>Research</h2>
-            <div class="stack">
-                <div class="card">
-                    <h3>Neuro-symbolic predictive process monitoring</h3>
-                    <p>Combining neural models with logical knowledge so that predictions about running process instances are both accurate and compliant with business rules.</p>
-                </div>
-                <div class="card">
-                    <h3>Neuro-symbolic AI for early sepsis diagnosis</h3>
-                    <p>Predicting sepsis early from clinical textual notes, using methods that encode medical knowledge alongside learned representations.</p>
-                </div>
-                <figure class="card demo">
-                    <div class="demo-intro">
-                        <p class="label">Example</p>
-                        <h3>Next-activity prediction</h3>
-                        <p class="meta">One patient from the Sepsis Cases event log. The model reads the activities so far, predicts what comes next, then checks the prediction against a clinical rule.</p>
-                    </div>
-                    <div>
-                        <ol class="trace">
-                            <li style="--i:0"><span class="n">01</span>ER Registration</li>
-                            <li style="--i:1"><span class="n">02</span>ER Triage</li>
-                            <li style="--i:2"><span class="n">03</span>ER Sepsis Triage</li>
-                            <li style="--i:3"><span class="n">04</span>CRP</li>
-                            <li style="--i:4"><span class="n">05</span>LacticAcid</li>
-                            <li style="--i:5" class="predicted"><span class="n">06</span>IV Antibiotics<span class="tag">predicted</span></li>
-                        </ol>
-                        <div class="rule">
-                            <strong>Rule satisfied</strong>
-                            <code>response(ER Sepsis Triage, IV Antibiotics)</code>
-                        </div>
-                    </div>
-                </figure>
-            </div>
-        </section>
-
-        <section id="publications" class="split">
-            <h2>Publications</h2>
+        <section id="publications" class="rail" aria-labelledby="publications-title">
+            <h2 id="publications-title" data-reveal>Publications</h2>
             <div>
                 <!-- Filled from publications.js -->
-                <ul class="pubs" id="pubs"></ul>
-                <noscript><p class="meta">The publication list needs JavaScript. See my <a href="cv.pdf">CV</a> for the full list.</p></noscript>
+                <ul class="rows" id="pubs"></ul>
+                <noscript><p class="muted">The publication list needs JavaScript. See my <a href="cv.pdf">CV</a> for the full list.</p></noscript>
             </div>
         </section>
 
-        <section id="assistant" class="split">
-            <h2>Research assistant</h2>
-            <div class="assistant">
+        <section id="assistant" class="rail" aria-labelledby="assistant-title">
+            <h2 id="assistant-title" data-reveal>Research assistant</h2>
+            <div class="assistant" data-reveal style="--d:1">
                 <img src="mario2.jpg" alt="Mario the cat" width="120" height="120" loading="lazy">
                 <div>
                     <h3>Mario</h3>
-                    <p class="meta">Chief motivation officer</p>
+                    <p class="role">Chief motivation officer</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="split contact">
-            <h2>Contact</h2>
-            <div>
-                <p class="meta">I'm open to collaborations and discussions. Email is the best way to reach me.</p>
-                <a class="email" href="mailto:fabrizio.desantis@unipr.it">fabrizio.desantis@unipr.it</a>
-                <address><span class="label">Office</span>Parco Area delle Scienze 181/A<br>Università degli Studi di Parma<br>I-43124 Parma</address>
+        <section id="contact" class="rail contact" aria-labelledby="contact-title">
+            <h2 id="contact-title" data-reveal>Contact</h2>
+            <div class="band">
+                <p class="statement" data-reveal style="--d:1">I'm open to collaborations and discussions. Email is the best way to reach me.</p>
+                <img class="portrait" src="propic.jpeg" alt="Portrait of Fabrizio De Santis" width="160" height="160" loading="lazy" data-reveal style="--d:2">
+                <div data-reveal style="--d:3">
+                    <a class="email" href="mailto:fabrizio.desantis@unipr.it">fabrizio.desantis@unipr.it</a>
+                    <ul>
+                        <li><a href="https://github.com/FabrizioDeSantis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/fabrizio-de-santis-075474158/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    </ul>
+                    <address>Office<br>Parco Area delle Scienze 181/A<br>Università degli Studi di Parma<br>I-43124 Parma</address>
+                </div>
             </div>
         </section>
-
     </main>
 
     <footer>
-        <p>&copy; <span id="year">2026</span> Fabrizio De Santis</p>
+        <p>Fabrizio De Santis, PhD candidate</p>
         <ul>
             <li><a href="https://github.com/FabrizioDeSantis" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/fabrizio-de-santis-075474158/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
         </ul>
+        <p>&copy; <span id="year">2026</span></p>
     </footer>
 
 </div>
@@ -486,7 +454,7 @@
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Publications: render the list and a BibTeX box per paper
+    // Publications: render a two-ended row and a BibTeX box per paper
     (function () {
         var list = document.getElementById('pubs');
         var pubs = window.PUBLICATIONS || [];
@@ -532,10 +500,10 @@
         }
 
         pubs.forEach(function (pub, i) {
-            var li = el('li');
-            li.appendChild(el('p', 'venue', pub.venue));
+            var li = el('li', 'row');
+            li.setAttribute('data-reveal', '');
 
-            var title = el('p', 'pub-title');
+            var title = el('p', 'what');
             if (pub.url) {
                 var link = el('a', null, pub.title);
                 link.href = pub.url;
@@ -546,8 +514,9 @@
                 title.textContent = pub.title;
             }
             li.appendChild(title);
+            li.appendChild(el('p', 'value', pub.venue));
 
-            var authors = el('p', 'authors');
+            var authors = el('p', 'detail');
             pub.authors.forEach(function (a, j) {
                 if (j) authors.appendChild(document.createTextNode(', '));
                 var name = a[0] + ' ' + a[1];
@@ -560,13 +529,13 @@
             box.id = 'bibtex-' + i;
             box.hidden = true;
             box.appendChild(el('pre', null, bibtex));
-            var copyBtn = el('button', 'chip', 'Copy');
+            var copyBtn = el('button', 'text-button', 'Copy');
             copyBtn.type = 'button';
             copyBtn.setAttribute('aria-label', 'Copy BibTeX');
             copyBtn.addEventListener('click', function () { copy(bibtex, copyBtn); });
             box.appendChild(copyBtn);
 
-            var toggle = el('button', 'chip', 'BibTeX');
+            var toggle = el('button', 'text-button', 'BibTeX');
             toggle.type = 'button';
             toggle.setAttribute('aria-expanded', 'false');
             toggle.setAttribute('aria-controls', box.id);
@@ -583,6 +552,24 @@
         });
     })();
 
+    // Entrances: each part of a section rises in once as it arrives
+    (function () {
+        var items = document.querySelectorAll('[data-reveal]');
+        if (!('IntersectionObserver' in window)) {
+            items.forEach(function (n) { n.classList.add('in'); });
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -8% 0px' });
+        items.forEach(function (n) { io.observe(n); });
+    })();
+
     (function () {
         var root = document.documentElement;
         var toggle = document.querySelector('.theme-toggle');
@@ -591,7 +578,7 @@
         function apply(theme) {
             root.setAttribute('data-theme', theme);
             toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-            themeColor.setAttribute('content', theme === 'dark' ? '#121416' : '#f5f4f0');
+            themeColor.setAttribute('content', theme === 'dark' ? '#0E0B1D' : '#F2F0F8');
         }
 
         apply(root.getAttribute('data-theme') || 'dark');

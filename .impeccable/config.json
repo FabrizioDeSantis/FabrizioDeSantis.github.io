@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-01T19:57:57.125Z",
+        "reason": "Claude decided: hero flush child is the full-width stripe band (direction ornament); contact section has var(--pad) inset, verified in screenshots"
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-01T19:57:57.321Z",
+        "reason": "Claude decided: mario2.jpg starts at opacity 0 and crossfades to fully visible every 14s (signature motion)"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-01T19:57:57.528Z",
+        "reason": "Claude decided: light-mode ground #e3e0d9 is a low-chroma stone inversion of the dealt tobacco/bone palette"
+      }
+    ]
+  }
+}
